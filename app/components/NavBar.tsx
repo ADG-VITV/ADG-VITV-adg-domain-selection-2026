@@ -25,7 +25,7 @@ import { Domain } from "@/lib/types";
 import { User } from "firebase/auth";
 import { getSubmittedTechnicalDomains, getSubmittedManagementDomains } from "@/lib/functions";
 
-const domainMapping =  {
+const domainMapping = {
   ios: "iOS",
   design: "Design",
   android: "Android",
@@ -35,7 +35,7 @@ const domainMapping =  {
   editorial: "Editorial",
   events: "Events",
   finance: "Finance",
- 
+
 }
 const getSubmissions = async (
   user: User,
@@ -48,19 +48,19 @@ const getSubmissions = async (
 };
 
 export default function NavBar() {
-  
+
   const { user, logOut } = UserAuth();
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [domainsToBeGrayed, setDomainsToBeGrayed] = useState<
-      Domain[] | "loading">("loading");
-      useEffect(() => {
-        if (user === null) router.push("/");
-        else if (user !== "loading") {
-          getSubmissions(user, setDomainsToBeGrayed);
-        }
-      }, [user]);
-console.log( domainsToBeGrayed);
+    Domain[] | "loading">("loading");
+  useEffect(() => {
+    if (user === null) router.push("/");
+    else if (user !== "loading") {
+      getSubmissions(user, setDomainsToBeGrayed);
+    }
+  }, [user]);
+  console.log(domainsToBeGrayed);
 
   return user === null || user === "loading" ? (
     <></>
@@ -74,7 +74,8 @@ console.log( domainsToBeGrayed);
       <Link textDecor="none" href="/dashboard">
         <Image w="4rem" src={"/ADG.jpg"} borderRadius="10px" />
       </Link>
-      <Heading ml="1rem">{`ADG Domain Selections '25`}</Heading>
+      <Heading ml="1rem" bgGradient="linear(to-r, cyan.400, purple.500)"
+        bgClip="text">{`ADG Domain Selections '26`}</Heading>
       <Flex
         p="0.5rem"
         _hover={{ bg: "brand.blackAlpha", transition: "all 100ms" }}
@@ -89,7 +90,7 @@ console.log( domainsToBeGrayed);
         <DrawerOverlay />
         <DrawerContent bg="brand.menuBg" color="brand.menuTxt">
           <DrawerCloseButton mt="1.5rem" />
-          <DrawerHeader mt="1rem">Menu</DrawerHeader>
+          <DrawerHeader mt="1rem" color = "brand.menuTxt">Menu</DrawerHeader>
 
           <DrawerBody p="0%">
             <Flex flexDir="column" w="100%" p="1rem" justifyContent="center">
@@ -99,44 +100,44 @@ console.log( domainsToBeGrayed);
                 justifyContent="space-between"
                 p="1rem"
                 borderRadius="8px"
-                bg="brand.violet"
-                color="brand.gray"
+                bg="whiteAlpha.700"
+                color="black"
+                fontWeight="800"
               >
                 <Text fontWeight="600">{user.displayName}</Text>
                 <Avatar size="sm" src={user.photoURL || ""} />
               </Flex>
               <Flex flexDir="column" mt="1rem">
-  <Text fontSize="lg" fontWeight="bold" mb="0.5rem">
-    Selected Domains:
-  </Text>
-  <Flex flexWrap="wrap" gap="0.5rem">
-    {domainsToBeGrayed === "loading" ? (
-      <Text fontStyle="italic" color="gray.400">
-        Loading...
-      </Text>
-    ) : domainsToBeGrayed.length > 0 ? (
-      domainsToBeGrayed.map((domain, index) => (
-        <Text
-          key={index}
-          px="1rem"
-          py="1rem"
-          bg="brand.violet"
-          color="white"
-          borderRadius="8px"
-          fontWeight="medium"
-          boxShadow="sm"
-        >
-          {domainMapping[domain as keyof typeof domainMapping] || domain}
-        </Text>
-      ))
-    ) : (
-      <Text fontStyle="italic" color="gray.400">
-        None
-      </Text>
-    )}
-  </Flex>
-</Flex>
-
+                <Text fontSize="lg" fontWeight="bold" mb="0.5rem" color = "brand.menuTxt">
+                  Selected Domains:
+                </Text>
+                <Flex flexWrap="wrap" gap="0.5rem">
+                  {domainsToBeGrayed === "loading" ? (
+                    <Text fontStyle="italic" color="gray.400">
+                      Loading...
+                    </Text>
+                  ) : domainsToBeGrayed.length > 0 ? (
+                    domainsToBeGrayed.map((domain, index) => (
+                      <Text
+                        key={index}
+                        px="0.5rem"
+                        py="0.5rem"
+                        bg="whiteAlpha.700"
+                        color="black"
+                        borderRadius="20px"
+                        fontWeight="500"
+                        boxShadow="sm"
+                      >
+                        {domainMapping[domain as keyof typeof domainMapping] || domain}
+                      </Text>
+                    ))
+                  ) : (
+                    <Text fontStyle="italic" color="red">
+                      None
+                    </Text>
+                  )}
+                </Flex>
+              </Flex>
 
             </Flex>
           </DrawerBody>

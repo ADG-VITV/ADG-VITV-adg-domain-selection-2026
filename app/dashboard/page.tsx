@@ -73,7 +73,7 @@ export default function Dashboard() {
     {
       icon: FaHtml5,
       label: "Web" as Domain,
-      tech: "HTML, CSS, JavaScript",
+      tech: "HTML, CSS, JavaScript and frameworks",
       color: "linear(to-r, #f7b42c, #fc575e)",
     },
     {

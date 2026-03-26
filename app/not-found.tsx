@@ -26,7 +26,7 @@ export default function NotFound() {
     >
       <NavBar />
       <Heading m="2rem" color="#9FB4B6">
-        Haha I see what your trying to here lol, finish up your tasks.
+        Haha I see what you're trying to do here lol, finish up your tasks.
       </Heading>
     </Flex>
   );
