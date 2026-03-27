@@ -14,7 +14,7 @@ export const domainToName: { [key in Domain]: string } = {
 
 export const domainToTaskLink: { [key in Domain]: string } = {
   web: "https://drive.google.com/file/d/1D6RC-jpeYapzXOsHEW7fX22KHe5ToAD6/preview",
-  ios: "https://drive.google.com/file/d/1SWWdAt9bM8WT6ngBYm7LBuVbIO6WitG6/preview",
+  ios: "https://docs.google.com/document/d/1WKBRFT09UdXiT94ZrbDYJA6sglgLtWZySeqNfWlF-5g/edit?usp=sharing",
   android:
     "https://drive.google.com/file/d/1ktsRf5idRkZ2kOl1IE-j2fb9tEbRRjuc/preview",
   ml: "https://drive.google.com/file/d/1zcDNqCjSqMdzN_WVW8aNKRG9xMWPNAJ8/preview",
