@@ -13,10 +13,10 @@ export const domainToName: { [key in Domain]: string } = {
 };
 
 export const domainToTaskLink: { [key in Domain]: string } = {
-  web: "https://drive.google.com/file/d/1D6RC-jpeYapzXOsHEW7fX22KHe5ToAD6/preview",
-  ios: "https://docs.google.com/document/d/1WKBRFT09UdXiT94ZrbDYJA6sglgLtWZySeqNfWlF-5g/preview",
-  python: "https://drive.google.com/file/d/1ktsRf5idRkZ2kOl1IE-j2fb9tEbRRjuc/preview",
-  ml: "https://drive.google.com/file/d/1zcDNqCjSqMdzN_WVW8aNKRG9xMWPNAJ8/preview",
+  web: "https://drive.google.com/file/d/1hb0fmWeW7xdfug7sGC5uvMaHLnLXfGxV/preview",
+  ios: "https://drive.google.com/file/d/1WKBRFT09UdXiT94ZrbDYJA6sglgLtWZySeqNfWlF-5g/preview",
+  python: "https://drive.google.com/file/d/1PSrzPj8RjmHbqKhoMlkv0zxP5NrfyKWl/preview",
+  ml: "https://drive.google.com/file/d/1st9vnzs1_yln9bqEaeRT-Hd91k7Mrqw7/preview",
   blockchain: "https://drive.google.com/file/d/1BFqzbfuYhbL37khra__rI8VjzY995nct/preview",
   design: "https://drive.google.com/file/d/1-TrPwnITh0-GLfqA55SMCjnigJeeP4RB/preview",
   motiongraphics:"https://drive.google.com/file/d/1dMWWD1tP4NTmlruwA_OKlDP2JJRW4I6E/preview",
