@@ -20,6 +20,7 @@ import { User } from "firebase/auth";
 import useCheckTest from "../hooks/useCheckTest";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaHtml5, FaApple, FaAndroid, FaPython } from "react-icons/fa";
+import { GiArtificialIntelligence } from "react-icons/gi";
 import { SiSolidity, SiFigma } from "react-icons/si";
 import { MdEdit, MdAttachMoney, MdEvent } from "react-icons/md";
 import { DomainCard, DomainInfo } from "../components/DomainCard";
@@ -83,15 +84,15 @@ export default function Dashboard() {
       color: "linear(to-r, #ffffff, #ffffff)",
     },
     {
-      icon: FaAndroid,
-      label: "Android" as Domain,
-      tech: "Kotlin, Java",
+      icon: FaPython,
+      label: "Python" as Domain,
+      tech: "FastAPI, Flask",
       color: "linear(to-r, #00c9ff, #92fe9d)",
     },
     {
-      icon: FaPython,
+      icon: GiArtificialIntelligence,
       label: "ML" as Domain,
-      tech: "Python, TensorFlow",
+      tech: "PyTorch, TensorFlow",
       color: "linear(to-r, #ff7e5f, #feb47b)",
     },
     {

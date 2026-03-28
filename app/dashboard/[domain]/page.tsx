@@ -64,11 +64,11 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
   const domainString = params.domain as string;
 
 
-  const managementDomains = new Set(["editorial", "events", "finance"]);
-  const technicalDomains = new Set(["android", "blockchain", "ios", "ml", "web", "design"]);
+  const managementDomains = new Set(["management", "PnM"]);
+  const technicalDomains = new Set(["python", "blockchain", "ios", "ml", "web", "design", "motiongraphics"]);
 
   const domainToPlatform = (domain: string) => {
-    if (domain === "ios") {
+    if (domain === "ios" || domain === "python") {
       return "Google Drive or GitHub";
     }
     return managementDomains.has(domain) ? "Google Drive" : "GitHub";
@@ -314,7 +314,7 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
             </Heading>
             <OrderedList color="whiteAlpha.800" spacing={4} pl={4}>
               <ListItem>
-                <Text>Review the task description carefully and ensure you understand all requirements.</Text>
+                <Text>Review the task description carefully and ensure that you understand all the requirements.</Text>
               </ListItem>
               <ListItem>
                 <Text>{`Upload your solution to ${assignmentPlatform} and paste the link below.`}</Text>
@@ -429,5 +429,4 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
       </MotionFlex>
     </Box>
     </>
-
 }

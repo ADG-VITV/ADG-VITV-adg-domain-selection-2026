@@ -9,20 +9,18 @@ export interface IAuthContext {
 export enum Domain {
   web = "web",
   ios = "ios",
-  android = "android",
+  python = "python",
   ml = "ml",
   blockchain = "blockchain",
   design = "design",
-  Editorial='editorial',
-  Finance='finance',
-  Events='events'
+  motiongraphics = "Motion Graphics",
+  management ='Management',
+  PnM='Publicity and Marketing',
 }
 
 export enum ManagementDomain {
-  sponsorship = "sponsorship",
-  publicity = "publicity",
-  operations = "operations",
-  general = "general",
+  management = "Management",
+  PnM = "Publicity and Marketing",
 }
 
 export type IDomainIcons = {
