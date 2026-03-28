@@ -22,7 +22,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaHtml5, FaApple, FaAndroid, FaPython } from "react-icons/fa";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { SiSolidity, SiFigma } from "react-icons/si";
-import { MdEdit, MdAttachMoney, MdEvent } from "react-icons/md";
+import { MdEdit, MdAttachMoney, MdEvent, MdManageAccounts, MdCampaign, MdAnimation } from "react-icons/md";
 import { DomainCard, DomainInfo } from "../components/DomainCard";
 import Footer from "../components/Footer";
 
@@ -107,27 +107,26 @@ export default function Dashboard() {
       tech: "UI/UX, Figma",
       color: "linear(to-r, #6a11cb, #2575fc)",
     },
+    {
+      icon: MdAnimation,
+      label: "Motion Graphics" as Domain,
+      tech: "Animation, Video Editing",
+      color: "linear(to-r, #6a11cb, #2575fc)",
+    },
   ];
 
   const marketingDomain: DomainInfo[] = [
-    // Added explicit typing
     {
-      icon: MdEdit,
-      label: "Editorial" as Domain,
-      tech: "Content Writing, Editing",
+      icon: MdManageAccounts,
+      label: "Management" as Domain,
+      tech: "Finance, Editorial, Events",
       color: "linear(to-r, #ff6b6b, #ff8e8e)",
     },
     {
-      icon: MdAttachMoney,
-      label: "Finance" as Domain,
-      tech: "Financial, Planning",
+      icon: MdCampaign,
+      label: "PnM" as Domain,
+      tech: "Publicity, Marketing, Social Media",
       color: "linear(to-r, #4ecdc4, #45b7af)",
-    },
-    {
-      icon: MdEvent,
-      label: "Events" as Domain,
-      tech: "Event , Management",
-      color: "linear(to-r, #a8e6cf, #90d4be)",
     },
   ];
 
