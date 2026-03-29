@@ -19,7 +19,7 @@ export const domainToTaskLink: { [key in Domain]: string } = {
   ml: "https://drive.google.com/file/d/1st9vnzs1_yln9bqEaeRT-Hd91k7Mrqw7/preview",
   blockchain: "https://drive.google.com/file/d/1BFqzbfuYhbL37khra__rI8VjzY995nct/preview",
   design: "https://drive.google.com/file/d/1-TrPwnITh0-GLfqA55SMCjnigJeeP4RB/preview",
-  motion_graphics:"https://drive.google.com/file/d/1dMWWD1tP4NTmlruwA_OKlDP2JJRW4I6E/preview",
+  motion_graphics:"https://drive.google.com/file/d/124_QshcN1Zi1-HJTQhHUnkwIbCvsBV9XsDlElV3RF-g/preview",
   management:"https://drive.google.com/file/d/1fljQDqyfvYztsNRU4E2SQTGOi0x0zL1CdDL6gCxMV8A/preview",
   pnm: "https://drive.google.com/file/d/1mvn3UrKsmDrc8QnqzYnOkTZI7_G5m5mJZzhw8yC2JZw/preview"
 };
