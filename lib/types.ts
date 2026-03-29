@@ -13,14 +13,14 @@ export enum Domain {
   ml = "ml",
   blockchain = "blockchain",
   design = "design",
-  motiongraphics = "Motion Graphics",
-  management ='Management',
-  PnM='Publicity and Marketing',
+  motiongraphics = "motiongraphics",
+  management ='management',
+  PnM='PnM',
 }
 
 export enum ManagementDomain {
-  management = "Management",
-  PnM = "Publicity and Marketing",
+  management = "management",
+  PnM = "PnM",
 }
 
 export type IDomainIcons = {

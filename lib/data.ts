@@ -20,8 +20,8 @@ export const domainToTaskLink: { [key in Domain]: string } = {
   blockchain: "https://drive.google.com/file/d/1BFqzbfuYhbL37khra__rI8VjzY995nct/preview",
   design: "https://drive.google.com/file/d/1-TrPwnITh0-GLfqA55SMCjnigJeeP4RB/preview",
   motiongraphics:"https://drive.google.com/file/d/1dMWWD1tP4NTmlruwA_OKlDP2JJRW4I6E/preview",
-  management:"https://drive.google.com/file/d/1wUtjMgah3WcR_-H3fRGV9x8pKS4favHs/preview",
-  PnM: "https://drive.google.com/file/d/1ps2EO9Qcu2IFG3Z0NW0kcX6732-9D-Ui/preview"
+  management:"https://drive.google.com/file/d/1fljQDqyfvYztsNRU4E2SQTGOi0x0zL1CdDL6gCxMV8A/preview",
+  PnM: "https://drive.google.com/file/d/1mvn3UrKsmDrc8QnqzYnOkTZI7_G5m5mJZzhw8yC2JZw/preview"
 };
 
 export const managementDomainToTagColorScheme: {

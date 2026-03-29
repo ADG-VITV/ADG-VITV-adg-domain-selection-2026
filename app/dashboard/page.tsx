@@ -115,7 +115,7 @@ export default function Dashboard() {
     },
   ];
 
-  const marketingDomain: DomainInfo[] = [
+  const marketingDomain: DomainInfo[] = [ 
     {
       icon: MdManageAccounts,
       label: "Management" as Domain,
