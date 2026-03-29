@@ -59,13 +59,15 @@ const pulse = keyframes`
 export default function DomainPage({ params }: { params: { domain: string } }) {
   const { user } = UserAuth();
   const router = useRouter();
-  const domain = params.domain as Domain;
   // console.log( domain);
-  const domainString = params.domain as string;
+  const rawDomain = decodeURIComponent(params.domain);
+  const domainParam = decodeURIComponent(params.domain).replace(" ", "_");
+  const normalizedDomain = rawDomain.replace(/\s+/g, "_");
+  const domain = normalizedDomain as Domain;
 
 
-  const managementDomains = new Set(["management", "PnM"]);
-  const technicalDomains = new Set(["python", "blockchain", "ios", "ml", "web", "design", "motiongraphics"]);
+  const managementDomains = new Set(["management", "pnm"]);
+  const technicalDomains = new Set(["python", "blockchain", "ios", "ml", "web", "design", "motion_graphics"]);
 
   const domainToPlatform = (domain: string) => {
     if (domain === "ios" || domain === "python") {

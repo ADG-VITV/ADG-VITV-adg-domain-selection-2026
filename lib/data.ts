@@ -7,9 +7,9 @@ export const domainToName: { [key in Domain]: string } = {
   ml: "Machine Learning",
   blockchain: "Blockchain",
   design: "Design",
-  motiongraphics: "Motion Graphics",
+  motion_graphics: "Motion Graphics",
   management:'Management',
-  PnM:'Publicity and Marketing',
+  pnm:'Publicity and Marketing',
 };
 
 export const domainToTaskLink: { [key in Domain]: string } = {
@@ -19,14 +19,14 @@ export const domainToTaskLink: { [key in Domain]: string } = {
   ml: "https://drive.google.com/file/d/1st9vnzs1_yln9bqEaeRT-Hd91k7Mrqw7/preview",
   blockchain: "https://drive.google.com/file/d/1BFqzbfuYhbL37khra__rI8VjzY995nct/preview",
   design: "https://drive.google.com/file/d/1-TrPwnITh0-GLfqA55SMCjnigJeeP4RB/preview",
-  motiongraphics:"https://drive.google.com/file/d/1dMWWD1tP4NTmlruwA_OKlDP2JJRW4I6E/preview",
+  motion_graphics:"https://drive.google.com/file/d/1dMWWD1tP4NTmlruwA_OKlDP2JJRW4I6E/preview",
   management:"https://drive.google.com/file/d/1fljQDqyfvYztsNRU4E2SQTGOi0x0zL1CdDL6gCxMV8A/preview",
-  PnM: "https://drive.google.com/file/d/1mvn3UrKsmDrc8QnqzYnOkTZI7_G5m5mJZzhw8yC2JZw/preview"
+  pnm: "https://drive.google.com/file/d/1mvn3UrKsmDrc8QnqzYnOkTZI7_G5m5mJZzhw8yC2JZw/preview"
 };
 
 export const managementDomainToTagColorScheme: {
   [key in ManagementDomain]: string;
 } = {
   management: "red",
-  PnM: "green",
+  pnm: "green",
 };
