@@ -55,7 +55,7 @@ export async function checkTechnicalDomainSubmission(
   domain: Domain
 ): Promise<boolean> {
   return checkPathExistsInDatabase(
-    `users/${user.displayName}/responses/technicalDomain/${domain}/assignmentLink`
+    `users/${user.uid}/responses/technicalDomain/${domain}/assignmentLink`
   );
 }
 
@@ -80,7 +80,7 @@ export async function checkManagementDomainSubmission(
   domain: Domain
 ): Promise<boolean> {
   return checkPathExistsInDatabase(
-    `users/${user.displayName}/responses/managementDomain/${domain}/assignmentLink`
+    `users/${user.uid}/responses/managementDomain/${domain}/assignmentLink`
   );
 }
 

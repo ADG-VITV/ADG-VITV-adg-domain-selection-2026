@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Loader from "./components/Loader";
 
-
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -108,7 +107,6 @@ export default function App() {
       <Heading color="white" fontSize={["2xl", "3xl"]} mb="2">
         ADGVIT
       </Heading>
-
       <Text
         color="whiteAlpha.800"
         mb="8"
@@ -137,7 +135,7 @@ export default function App() {
       >
         Sign in with Google
       </Button>
-
+      
       <Text
         mt="6"
         color="whiteAlpha.600"
