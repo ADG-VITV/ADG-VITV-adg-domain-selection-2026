@@ -144,7 +144,7 @@ export default function App() {
         fontSize="sm"
         textAlign="center"
       >
-        Please Sign in with your VIT email.
+        Please Sign in with your VIT mail ID.
       </Text>
     </Flex> 
   </Flex>
