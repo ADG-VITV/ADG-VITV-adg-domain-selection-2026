@@ -109,7 +109,7 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
     else if (user !== "loading") {
       getSubmissions(user, setDomainsToBeGrayed);
     }
-  }, [user]);
+  }, [user, router]);
   
   useEffect(() => {
     if (domainsToBeGrayed !== "loading" && domainsToBeGrayed.includes(domain)) {
@@ -123,7 +123,7 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
       });
       router.push("/dashboard");
     }
-  }, [domainsToBeGrayed, domain, router]);
+  }, [domainsToBeGrayed, domain, router, toast]);
   
   
 //   console.log("Fetched Domains:", domainsToBeGrayed);

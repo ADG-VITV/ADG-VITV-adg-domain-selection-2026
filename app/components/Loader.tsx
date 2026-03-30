@@ -12,7 +12,7 @@ export default function Loader() {
       alignItems="center"
       justifyContent="center"
     >
-      <Image w="15rem" src="/loader-gif.gif" />
+      <Image w="15rem" src="/loader-gif.gif" alt="Loading..."/>
     </Flex>
   );
 }

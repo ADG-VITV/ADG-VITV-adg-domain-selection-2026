@@ -106,10 +106,10 @@ export function getShuffledRandomQuestions(
   questions: (IMCQ | ISubjective)[]
 ): (IMCQ | ISubjective)[] {
   const generalQuestions = questions.filter(
-    (q) => q.domain === ManagementDomain.general
+    (q) => q.domain === ManagementDomain.management
   );
   const nonGeneralQuestions = questions.filter(
-    (q) => q.domain !== ManagementDomain.general
+    (q) => q.domain !== ManagementDomain.management
   );
   const shuffledNonGeneralQuestions = nonGeneralQuestions.sort(
     () => 0.5 - Math.random()

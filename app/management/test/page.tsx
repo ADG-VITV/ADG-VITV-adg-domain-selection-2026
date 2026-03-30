@@ -45,7 +45,7 @@ export default function Test() {
         });
       }
     } else router.push("/dashboard");
-  }, [testStatus, user]);
+  }, [testStatus, user, router]);
 
   return user === "loading" ||
     user === null ||

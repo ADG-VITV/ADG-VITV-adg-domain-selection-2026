@@ -1,5 +1,4 @@
 "use client";
-// components/Countdown.tsx
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Flex, Heading, Icon, Text } from "@chakra-ui/react";
@@ -7,6 +6,7 @@ import useCheckTest from "../hooks/useCheckTest";
 import { updateTestStatus } from "@/lib/functions";
 import { User } from "firebase/auth";
 import AvTimerIcon from "@mui/icons-material/AvTimer";
+import { useCallback } from "react";
 
 interface CountdownProps {
   startTime: number;
@@ -26,7 +26,7 @@ const CountDown: React.FC<CountdownProps> = ({
     "loading"
   );
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(() => {
     if (testStatus === "loading" || testStatus === null) return;
     try {
       updateTestStatus(user, {
@@ -43,7 +43,7 @@ const CountDown: React.FC<CountdownProps> = ({
     } catch (err) {
       console.error(err);
     }
-  };
+  }, [testStatus,user, router]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -60,31 +60,31 @@ const CountDown: React.FC<CountdownProps> = ({
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [startTime, timeLimit, router]);
+  }, [startTime, timeLimit, handleSubmit]);
 
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-  };
+const formatTime = (time: number) => {
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+};
 
-  return remainingTime === "loading" ? (
-    <></>
-  ) : (
-    <Flex w="100%" justifyContent="center" mt="2rem">
-      <Flex
-        color="white"
-        gap="1rem"
-        p="1rem"
-        borderRadius="8px"
-        border="1px solid white"
-        bg="brand.blackAlpha"
-      >
-        <Icon as={AvTimerIcon} />
-        <Text>Remaining time: {formatTime(remainingTime)}</Text>
-      </Flex>
+return remainingTime === "loading" ? (
+  <></>
+) : (
+  <Flex w="100%" justifyContent="center" mt="2rem">
+    <Flex
+      color="white"
+      gap="1rem"
+      p="1rem"
+      borderRadius="8px"
+      border="1px solid white"
+      bg="brand.blackAlpha"
+    >
+      <Icon as={AvTimerIcon} />
+      <Text>Remaining time: {formatTime(remainingTime)}</Text>
     </Flex>
-  );
+  </Flex>
+);
 };
 
 export default CountDown;

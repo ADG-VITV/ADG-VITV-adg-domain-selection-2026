@@ -59,7 +59,7 @@ export default function NavBar() {
     else if (user !== "loading") {
       getSubmissions(user, setDomainsToBeGrayed);
     }
-  }, [user]);
+  }, [user, router]);
   console.log(domainsToBeGrayed);
 
   return user === null || user === "loading" ? (
@@ -72,7 +72,7 @@ export default function NavBar() {
       color="brand.violet"
     >
       <Link textDecor="none" href="/dashboard">
-        <Image w="4rem" src={"/ADG.jpg"} borderRadius="10px" />
+        <Image w="4rem" src={"/ADG.jpg"} borderRadius="10px" alt="Logo"/>
       </Link>
       <Heading ml="1rem" bgGradient="linear(to-r, cyan.400, purple.500)"
         bgClip="text">{`ADG Domain Selections '26`}</Heading>

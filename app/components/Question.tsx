@@ -26,6 +26,7 @@ import { User } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { managementDomainToTagColorScheme } from "@/lib/data";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { useCallback } from "react";
 
 function MCQQuestion({
   user,
@@ -233,7 +234,7 @@ export default function Question({ user }: { user: User }) {
 
   const router = useRouter();
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(() => {
     if (testStatus === "loading" || testStatus === null) return;
     try {
       updateTestStatus(user, {
@@ -245,18 +246,21 @@ export default function Question({ user }: { user: User }) {
     } catch (err) {
       console.error(err);
     }
-  };
+  }, [testStatus, user, router]);
 
   // set currentQuestion
   useEffect(() => {
-    if (testStatus !== "loading" && testStatus !== null) {
-      if (testStatus.currentQuestion === 9) {
-        handleSubmit();
-        return;
-      } else
-        setCurrentQuestion(testStatus.questions[testStatus.currentQuestion]);
+  if (testStatus !== "loading" && testStatus !== null) {
+    if (testStatus.currentQuestion === 9) {
+      handleSubmit();
+      return;
+    } else {
+      setCurrentQuestion(
+        testStatus.questions[testStatus.currentQuestion]
+      );
     }
-  }, [testStatus]);
+  }
+}, [testStatus, handleSubmit]);
 
   return testStatus === "loading" || currentQuestion === "loading" ? (
     <Skeleton />

@@ -18,7 +18,7 @@ export default function App() {
 
   useEffect(() => {
     if (user !== null && user !== "loading") router.push("/dashboard");
-  }, [user]);
+  }, [user, router]);
 
   const handleSignIn = async () => {
     try {
@@ -98,6 +98,7 @@ export default function App() {
         w="24"
         h="24"
         src="/ADG.jpg"
+        alt="ADG VIT Logo"
         borderRadius="xl"
         mb="6"
         transition="transform 0.3s ease"

@@ -59,7 +59,7 @@ export default function Dashboard() {
       return;
     }
     if (user !== "loading") getSubmissions(user, setDomainsToBeGrayed);
-  }, [user]);
+  }, [user, router]);
 
   if (
     user === "loading" ||

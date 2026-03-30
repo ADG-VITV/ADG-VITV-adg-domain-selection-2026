@@ -37,14 +37,14 @@ export default function Management() {
     if (testStatus === "loading" || testStatus === null) return;
     if (testStatus.isGivingTest) router.push("/management/test");
     else router.push("/dashboard");
-  }, [testStatus]);
+  }, [testStatus, router]);
 
   useEffect(() => {
     if (user === null) router.push("/");
     else if (user !== "loading") {
       fetchQuestions(setQuestions);
     }
-  }, [user]);
+  }, [user, router]);
 
   const handleStart = async () => {
     if (user === null || user === "loading" || questions === "loading") return;
