@@ -9,6 +9,10 @@ import {
 } from "firebase/auth";
 import { IAuthContext } from "@/lib/types";
 
+
+const provider = new GoogleAuthProvider();
+
+
 const AuthContext = createContext<IAuthContext>({
   user: "loading",
   googleSignIn: () => Promise.resolve(),
@@ -20,26 +24,14 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
 
   // login function
   const googleSignIn = async () => {
-    const provider = new GoogleAuthProvider();
-    provider.setCustomParameters({
-      hd: "vitstudent.ac.in",
-    });
-
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const email = result.user?.email || "";
-
-      // Enforce VIT email restriction
-      if (!email.endsWith("@vitstudent.ac.in")) {
-        await signOut(auth); // Immediately sign out if not a VIT email
-        setUser(null); // Reset user state
-
-        throw new Error("Only VIT student emails are allowed.");
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  try {
+    const result = await signInWithPopup(auth, provider);
+    console.log("SUCCESS:", result.user);
+  } catch (error: any) {
+    console.error("ERROR CODE:", error.code);
+    console.error("ERROR MESSAGE:", error.message);
+  }
+};
 
   // logout function
   const logOut = async () => {
