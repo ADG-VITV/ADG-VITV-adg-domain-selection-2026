@@ -13,10 +13,10 @@ export const domainToName: { [key in Domain]: string } = {
 };
 
 export const domainToTaskLink: { [key in Domain]: string } = {
-  web: "https://drive.google.com/file/d/1hb0fmWeW7xdfug7sGC5uvMaHLnLXfGxV/preview",
-  ios: "https://drive.google.com/file/d/1WKBRFT09UdXiT94ZrbDYJA6sglgLtWZySeqNfWlF-5g/preview",
+  web: "https://drive.google.com/file/d/1kVmWRXIMb2oG_mTEiIwtKkggNMUW5XD71LhQqiBpRjY/preview",
+  ios: "https://drive.google.com/file/d/1wKx2PE6Y77FQwxmicYZ-2oEgdhgdhAU_M3tuKCQCszM/preview",
   python: "https://drive.google.com/file/d/1PSrzPj8RjmHbqKhoMlkv0zxP5NrfyKWl/preview",
-  ml: "https://drive.google.com/file/d/1st9vnzs1_yln9bqEaeRT-Hd91k7Mrqw7/preview",
+  ml: "https://drive.google.com/file/d/1ecAhgwf9BN7o8eeL-pZ38jng3LNhhK3LjylCg781I58/preview",
   blockchain: "https://drive.google.com/file/d/1BFqzbfuYhbL37khra__rI8VjzY995nct/preview",
   design: "https://drive.google.com/file/d/1-TrPwnITh0-GLfqA55SMCjnigJeeP4RB/preview",
   motion_graphics:"https://drive.google.com/file/d/124_QshcN1Zi1-HJTQhHUnkwIbCvsBV9XsDlElV3RF-g/preview",
