@@ -50,7 +50,7 @@ export default function App() {
         objectFit: "cover",
       }}
     >
-      <source src="/rec_reel.mp4" type="video/mp4" />
+      <source src="https://res.cloudinary.com/deggcnmop/video/upload/f_auto,q_auto/adg_reel_grzyjn.mp4" type="video/mp4" />
     </video>
   </Box>
 
