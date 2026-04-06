@@ -60,10 +60,10 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
   const { user } = UserAuth();
   const router = useRouter();
   // console.log( domain);
-  const rawDomain = decodeURIComponent(params.domain);
-  const domainParam = decodeURIComponent(params.domain).replace(" ", "_");
-  const normalizedDomain = rawDomain.replace(/\s+/g, "_");
-  const domain = normalizedDomain as Domain;
+  const domain = decodeURIComponent(params.domain)
+  .trim()
+  .toLowerCase()
+  .replace(/\s+/g, "_") as Domain;
 
 
   const managementDomains = new Set(["management", "pnm"]);
@@ -126,8 +126,8 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
   }, [domainsToBeGrayed, domain, router, toast]);
   
   
-//   console.log("Fetched Domains:", domainsToBeGrayed);
-// console.log("Current Domain:", domain);
+console.log("Fetched Domains:", domainsToBeGrayed);
+console.log("Current Domain:", domain);
 
 
   const handleInputChange = (value: string) => {
@@ -156,7 +156,7 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
     setSubmitLoading(true);
     try {
       const domainType = managementDomains.has(domain) ? 'managementDomain' : 'technicalDomain';
-      const submissionPath = `/users/${user.displayName}/responses/${domainType}/${domain}`;
+      const submissionPath = `/users/${user.uid}/responses/${domainType}/${domain}`;
       
       await writeDataToDatabase(submissionPath, { assignmentLink });
       toast({
