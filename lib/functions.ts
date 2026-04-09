@@ -13,7 +13,6 @@ import { child, ref, get, set } from "firebase/database";
 import { Dispatch, SetStateAction } from "react";
 
 const dbRef = ref(database);
-
 export async function getDataFromDatabase<T>(path: string): Promise<T | null> {
   try {
     const dataSnap = await get(child(dbRef, path));
@@ -22,6 +21,17 @@ export async function getDataFromDatabase<T>(path: string): Promise<T | null> {
   } catch (err) {
     console.error(err);
     return null;
+  }
+}
+
+// Function to check if the deadline for submission has passed
+export async function isSubmissionOpen(): Promise<boolean> {
+  try {
+    const snap = await get(child(dbRef, "config"));
+    return snap.val()?.submissionOpen ?? false;
+  } catch (err) {
+    console.error(err);
+    return false;
   }
 }
 
