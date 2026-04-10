@@ -1,9 +1,12 @@
 "use client";
+
 import {
   getDataFromDatabase,
   getShuffledRandomQuestions,
   writeDataToDatabase,
+  isTestOpen,
 } from "@/lib/functions";
+
 import { Button, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
@@ -13,6 +16,10 @@ import { IMCQ, ISubjective, ITestStatus } from "@/lib/types";
 import NavBar from "../components/NavBar";
 import useCheckTest from "../hooks/useCheckTest";
 import StartIcon from "@mui/icons-material/Start";
+import { getDatabase, ref, get, child } from "firebase/database";
+
+const db = getDatabase();
+const dbRef = ref(db);
 
 const fetchQuestions = async (
   setQuestions: Dispatch<SetStateAction<(IMCQ | ISubjective)[] | "loading">>
@@ -29,7 +36,7 @@ export default function Management() {
   const [startLoad, setStartLoad] = useState(false);
   const [questions, setQuestions] = useState<
     (IMCQ | ISubjective)[] | "loading"
-  >("loading");
+  >("loading"); 
 
   // check for ongoing test
   const { testStatus } = useCheckTest();
@@ -47,18 +54,28 @@ export default function Management() {
   }, [user, router]);
 
   const handleStart = async () => {
-    if (user === null || user === "loading" || questions === "loading") return;
-    setStartLoad(true);
-    await writeDataToDatabase<ITestStatus>(`users/${user.uid}/testStatus`, {
-      isGivingTest: true,
-      currentQuestion: 0,
-      questions: getShuffledRandomQuestions(questions),
-      testStartEpoch: Date.now(),
-      isTestCompleted: false,
-    });
-    router.push("/management/test");
-    setStartLoad(false);
-  };
+  if (user === null || user === "loading" || questions === "loading") return;
+
+  const allowed = await isTestOpen();
+
+  if (!allowed) {
+    alert("Test is no longer available");
+    return;
+  }
+
+  setStartLoad(true);
+
+  await writeDataToDatabase<ITestStatus>(`users/${user.uid}/testStatus`, {
+    isGivingTest: true,
+    currentQuestion: 0,
+    questions: getShuffledRandomQuestions(questions),
+    testStartEpoch: Date.now(),
+    isTestCompleted: false,
+  });
+
+  router.push("/management/test");
+  setStartLoad(false);
+};
 
   return user === "loading" ||
     questions === "loading" ||

@@ -8,7 +8,7 @@ import { domainToName, domainToTaskLink } from "@/lib/data";
 import {
   getSubmittedTechnicalDomains,
   getSubmittedManagementDomains,
-  writeDataToDatabase,
+  submitAssignmentLink,
 } from "@/lib/functions";
 import { Domain } from "@/lib/types";
 import {
@@ -61,9 +61,9 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
   const router = useRouter();
   // console.log( domain);
   const domain = decodeURIComponent(params.domain)
-  .trim()
-  .toLowerCase()
-  .replace(/\s+/g, "_") as Domain;
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "_") as Domain;
 
 
   const managementDomains = new Set(["management", "pnm"]);
@@ -78,7 +78,7 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
 
   const assignmentPlatform = domainToPlatform(domain);
 
-  
+
   const [assignmentLink, setAssignmentLink] = useState("");
   const [submitLoading, setSubmitLoading] = useState(false);
   const [domainsToBeGrayed, setDomainsToBeGrayed] = useState<
@@ -110,7 +110,7 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
       getSubmissions(user, setDomainsToBeGrayed);
     }
   }, [user, router]);
-  
+
   useEffect(() => {
     if (domainsToBeGrayed !== "loading" && domainsToBeGrayed.includes(domain)) {
       toast({
@@ -124,10 +124,10 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
       router.push("/dashboard");
     }
   }, [domainsToBeGrayed, domain, router, toast]);
-  
-  
-console.log("Fetched Domains:", domainsToBeGrayed);
-console.log("Current Domain:", domain);
+
+
+  console.log("Fetched Domains:", domainsToBeGrayed);
+  console.log("Current Domain:", domain);
 
 
   const handleInputChange = (value: string) => {
@@ -149,24 +149,44 @@ console.log("Current Domain:", domain);
     }
 
     if (assignmentLink.length === 0) {
-      setLinkError({ status: true, message: `${assignmentPlatform} link is required.` });
+      setLinkError({
+        status: true,
+        message: `${assignmentPlatform} link is required.`,
+      });
       return;
     }
+
     if (user === null || user === "loading") return;
+
     setSubmitLoading(true);
+
     try {
-      const domainType = managementDomains.has(domain) ? 'managementDomain' : 'technicalDomain';
-      const submissionPath = `/users/${user.uid}/responses/${domainType}/${domain}`;
-      
-      await writeDataToDatabase(submissionPath, { assignmentLink });
+      // ✅ IMPORTANT: check result
+      const success = await submitAssignmentLink(user, domain, assignmentLink);
+
+      if (!success) {
+        toast({
+          title: "Submission Closed",
+          description: "The submission deadline has passed.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
+        setSubmitLoading(false);
+        return;
+      }
+
       toast({
         title: "Submission Successful",
-        description: `Your ${managementDomains.has(domain) ? 'management' : 'technical'} domain solution has been submitted successfully.`,
+        description: `Your ${managementDomains.has(domain) ? "management" : "technical"
+          } domain solution has been submitted successfully.`,
         status: "success",
         duration: 5000,
         isClosable: true,
         position: "top",
       });
+
       router.push("/dashboard");
     } catch (err) {
       toast({
@@ -179,6 +199,7 @@ console.log("Current Domain:", domain);
       });
       console.error(err);
     }
+
     setSubmitLoading(false);
   };
 
@@ -192,10 +213,10 @@ console.log("Current Domain:", domain);
   //   <Loader />
   // ) : (
 
-  if( user === null){
+  if (user === null) {
     return <p>Error</p>
   }
-  return<>
+  return <>
 
     <Box
       minH="100vh"
@@ -208,7 +229,7 @@ console.log("Current Domain:", domain);
       overflow="hidden"
     >
       <NavBar />
-      
+
       {/* Animated background elements */}
       <MotionBox
         position="absolute"
@@ -230,7 +251,7 @@ console.log("Current Domain:", domain);
           ease: "easeInOut",
         }}
       />
-      
+
       <MotionBox
         position="absolute"
         bottom="10%"
@@ -292,9 +313,9 @@ console.log("Current Domain:", domain);
             opacity="0.2"
             zIndex="0"
           />
-          
+
           <Flex align="center" gap={3}>
-            <Badge 
+            <Badge
               colorScheme={managementDomains.has(domain) ? "green" : "purple"}
               px={3}
               py={1}
@@ -307,9 +328,9 @@ console.log("Current Domain:", domain);
               {domainToName[domain]} Task
             </Heading>
           </Flex>
-          
+
           <Divider borderColor="whiteAlpha.300" />
-          
+
           <Box>
             <Heading size="sm" color="whiteAlpha.800" mb={4} fontWeight="medium">
               Submission Guidelines
@@ -326,7 +347,7 @@ console.log("Current Domain:", domain);
                   <Icon as={FaExclamationTriangle} color="yellow.300" mt={1} />
                   <Text>
                     <Text as="span" color="yellow.300" fontWeight="bold">
-                      Important: 
+                      Important:
                     </Text>
                     {" Make sure the link is accessible to evaluators. Only one submission is allowed."}
                   </Text>
@@ -337,16 +358,16 @@ console.log("Current Domain:", domain);
 
           <FormControl isInvalid={linkError.status} mt={4}>
             <Flex align="center" gap={2} mb={2}>
-              <Icon 
-                as={assignmentPlatform.includes("GitHub") ? FaGithub : FaGoogleDrive} 
-                color="whiteAlpha.900" 
+              <Icon
+                as={assignmentPlatform.includes("GitHub") ? FaGithub : FaGoogleDrive}
+                color="whiteAlpha.900"
                 fontSize="xl"
               />
               <Text color="whiteAlpha.900" fontWeight="500">
                 {`${assignmentPlatform} Link`}
               </Text>
-              <Tooltip 
-                label={`Paste your ${assignmentPlatform} link here. Make sure it's accessible to the evaluators.`} 
+              <Tooltip
+                label={`Paste your ${assignmentPlatform} link here. Make sure it's accessible to the evaluators.`}
                 placement="top"
               >
                 <Box as="span" cursor="help">
@@ -417,7 +438,7 @@ console.log("Current Domain:", domain);
               <Text color="green.400" fontSize="sm">Ready to view</Text>
             </HStack>
           </Box>
-          
+
           <Box pt="50px" height="100%">
             <iframe
               src={domainToTaskLink[domain]}
@@ -430,5 +451,5 @@ console.log("Current Domain:", domain);
         </Box>
       </MotionFlex>
     </Box>
-    </>
+  </>
 }
