@@ -165,7 +165,7 @@ export default function Dashboard() {
             bgGradient="linear(to-r, #fff, #a8b2d1)"
             bgClip="text"
           >
-            Step 1: Choose a Technical Domain
+            Step 1 : Choose a Technical Domain
           </Heading>
 
           <Flex
@@ -204,7 +204,7 @@ export default function Dashboard() {
             bgGradient="linear(to-r, #fff, #a8b2d1)"
             bgClip="text"
           >
-            Step 2: Choose a Management Domain
+            Step 2 : Choose a Management Domain
           </Heading>
           <Flex
             gap="6"
@@ -233,11 +233,7 @@ export default function Dashboard() {
         </MotionBox>
       </Box>
     </Box>
-    
-    
-    
     <Footer />
     </>
-
   );
 }

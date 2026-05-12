@@ -435,7 +435,7 @@ export default function DomainPage({ params }: { params: { domain: string } }) {
             <Text color="white" fontWeight="medium">Task Description</Text>
             <HStack>
               <Icon as={FaCheckCircle} color="green.400" />
-              <Text color="green.400" fontSize="sm">Ready to view</Text>
+              <Text color="green.400" fontSize="sm">View</Text>
             </HStack>
           </Box>
 
